@@ -1,0 +1,9 @@
+.tooltip {
+    background-color: yellow;
+    border: 1px solid black;
+    padding: 5px;
+    position: absolute;
+    z-index: 1000;
+    max-width: 300px;
+    word-wrap: break-word;
+}
