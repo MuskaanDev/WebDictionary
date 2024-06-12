@@ -1,8 +1,8 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    console.log("Message received:", message);  // Debugging line
+    console.log("Message received:", message);  
 
     if (message.action === "showTooltip") {
-        console.log("Showing tooltip for:", message.word);  // Debugging line
+        console.log("Showing tooltip for:", message.word);  
 
         // Remove existing tooltip if any
         const existingTooltip = document.querySelector(".tooltip");
@@ -10,12 +10,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             existingTooltip.remove();
         }
 
-        // Create a new tooltip
+        
         const tooltip = document.createElement("div");
         tooltip.className = "tooltip";
         tooltip.textContent = `${message.word}: ${message.definition}`;
 
-        // Add basic styling for the tooltip
+      
         tooltip.style.position = "absolute";
         tooltip.style.backgroundColor = "#333";
         tooltip.style.color = "#fff";
@@ -29,7 +29,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
         document.body.appendChild(tooltip);
 
-        // Position the tooltip near the selection
+        
         const selection = window.getSelection();
         if (selection.rangeCount > 0) {
             const range = selection.getRangeAt(0);
@@ -39,13 +39,13 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             tooltip.style.left = `${rect.left + window.scrollX}px`;
         }
 
-        // Remove the tooltip after 10 seconds
+        
         setTimeout(() => {
             tooltip.remove();
         }, 10000);
 
-        // Send response to acknowledge receipt of message
+        
         sendResponse({status: "tooltip shown"});
     }
-    return true;  // Keep the message channel open for sendResponse
+    return true;  
 });
