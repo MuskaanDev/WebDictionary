@@ -61,7 +61,7 @@ func getDefinition(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Return the first definition for simplicity
+	
 	definition := definitions[0]
 
 	w.Header().Set("Content-Type", "application/json")
